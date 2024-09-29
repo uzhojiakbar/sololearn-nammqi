@@ -6,6 +6,7 @@ const Home = () => {
   return (
     <HomeUi>
       <Header />
+      <h1>salom</h1>
     </HomeUi>
   );
 };
