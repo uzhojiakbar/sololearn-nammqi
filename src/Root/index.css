@@ -4,11 +4,20 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
   font-family: "Inter", sans-serif;
+  transition: 0.3s;
 }
 
 :root {
-  --loader-color: #3b82f6;
+  --loader-color: #3d84f7;
   --loader-bg-color: rgba(255, 255, 255, 0.4);
+
+  /* *BG */
+  --header-backdound: #0b132b;
+  --btn-bg: #3d84f7;
+  --navbar-backdound: #0b132b;
+
+  /* *BG HOVER */
+  --btn-hover-bg: #2b6fcc;
 }
 
 ::-webkit-scrollbar {
