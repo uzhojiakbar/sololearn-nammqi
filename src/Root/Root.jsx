@@ -1,11 +1,11 @@
 import React from "react";
-import Home from "../Pages/Home/Home";
 import "./index.css";
+import RouteControl from "../Router/RouteControl";
 
 const Root = () => {
   return (
     <div>
-      <Home />
+      <RouteControl />
     </div>
   );
 };

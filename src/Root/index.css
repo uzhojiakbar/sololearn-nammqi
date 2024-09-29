@@ -37,10 +37,12 @@
   margin-right: 2px;
 }
 
-/* Loader, HTML: <div class="loader"></div> */
+/* ? HTML: <div class="loader"></div> */
+/**   <div className="loaderWindow"><div className="loader"></div></div>*/
+
 .loader {
-  width: 80px;
-  --b: 10px;
+  width: 70px;
+  --b: 8px;
   aspect-ratio: 1;
   border-radius: 50%;
   background: var(--loader-color);
@@ -58,7 +60,6 @@
   mask-composite: intersect;
   animation: l5 1s infinite;
 }
-
 .loaderWindow {
   width: 100%;
   height: 100%;
@@ -71,7 +72,13 @@
   align-items: center;
   justify-content: center;
   z-index: 111;
-  background-color: var(--loader-bg-color);
+  background-color: rgba(255, 255, 255, 0.2);
 
   transition: 0.2s;
+}
+
+@keyframes l5 {
+  to {
+    transform: rotate(0.5turn);
+  }
 }

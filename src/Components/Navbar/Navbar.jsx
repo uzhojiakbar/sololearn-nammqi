@@ -10,9 +10,12 @@ import {
   NavLinks,
 } from "./styled";
 import { RiArrowDownSLine, RiArrowUpSLine } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const [activeMenu, setActiveMenu] = useState(false);
+
+  const nav = useNavigate();
 
   const ClickMenu = (id, children) => {
     if (id === activeMenu) {
@@ -28,13 +31,19 @@ export default function Navbar() {
     }
   };
 
+  const ChangeRoute = (link) => {
+    if (document.location.pathname !== link) {
+      nav(link);
+    }
+  };
+
   const CloseMenu = () => {
     setActiveMenu(false);
   };
 
   return (
     <NavbarContainer>
-      <Logo>Sololearn</Logo>
+      <Logo onClick={() => ChangeRoute("/")}>Sololearn</Logo>
       <NavLinks>
         {/* <NavLink href="#">Subjects</NavLink>
         <NavLink href="#">Code Compiler</NavLink>
@@ -64,10 +73,11 @@ export default function Navbar() {
             <></>
           );
         })}
-        <Button outline="y">Boshlash</Button>
-        <Button>Kirish</Button>
+        <Button onClick={() => ChangeRoute("account/register")} outline="y">
+          Boshlash
+        </Button>
+        <Button onClick={() => ChangeRoute("account/sign-in")}>Kirish</Button>
       </NavLinks>
-      {/* <MenuBack */}
       {activeMenu ? (
         <Menu>
           <div onClick={CloseMenu} className="back"></div>

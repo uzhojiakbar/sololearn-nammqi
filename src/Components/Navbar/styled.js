@@ -15,6 +15,8 @@ const NavbarContainer = styled.nav`
 
 const Logo = styled.div`
   font-size: 24px;
+  cursor: pointer;
+  padding: 10px 15px;
   font-weight: bold;
 `;
 
