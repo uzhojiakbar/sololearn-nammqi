@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: "Inter", sans-serif;
+}
+
+:root {
+  --loader-color: #3b82f6;
+  --loader-bg-color: rgba(255, 255, 255, 0.4);
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  margin-right: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3b82f6;
+  border-radius: 50px;
+  /* text-transform: ; */
+  margin-right: 2px;
+}
+
+/* Loader, HTML: <div class="loader"></div> */
+.loader {
+  width: 80px;
+  --b: 10px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--loader-color);
+  -webkit-mask: repeating-conic-gradient(
+      #0000 0deg,
+      #000 1deg 70deg,
+      #0000 71deg 90deg
+    ),
+    radial-gradient(
+      farthest-side,
+      #0000 calc(100% - var(--b) - 1px),
+      #000 calc(100% - var(--b))
+    );
+  -webkit-mask-composite: destination-in;
+  mask-composite: intersect;
+  animation: l5 1s infinite;
+}
+
+.loaderWindow {
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 111;
+  background-color: var(--loader-bg-color);
+
+  transition: 0.2s;
+}
