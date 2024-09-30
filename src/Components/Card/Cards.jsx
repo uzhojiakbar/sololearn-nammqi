@@ -28,6 +28,7 @@ function Cards() {
                 </div>
                 <div>
                     salom
+                    nima gapla oshna
                 </div>
             </WrapperChild>
         </Wrapper>
