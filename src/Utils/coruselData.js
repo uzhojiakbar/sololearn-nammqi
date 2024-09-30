@@ -14,6 +14,12 @@ import image11 from '../assets/coruselImg/image11.webp'
 import imageCard1 from '../assets/solo1.svg'
 import imageCard2 from '../assets/solo2.svg'
 import imageCard3 from '../assets/solo3.svg'
+import homeImg from '../assets/home.svg'
+import qrcode from '../assets/qr.png'
+import Appstore from '../assets/apple_store.png'
+import GooglePlay from '../assets/google_play.png'
+import TheImg1 from '../assets/theCards1.svg'
+import TheImg2 from '../assets/theCards2.svg'
 export const coruselData = [
     {
         id: 1,
@@ -193,23 +199,62 @@ export const coruselData = [
 export const CardsData = [
     {
         id: 1,
-        image:imageCard1,
+        image: imageCard1,
         name: 'Tailored to you',
         desc: "No matter your experience level, you'll be writing real, functional code within minutes of starting your first course.",
         btn: 'Start Learning'
     },
     {
         id: 2,
-        image:imageCard2,
+        image: imageCard2,
         name: 'Tailored to you',
         desc: "Go step-by-step through our unique courses. Assess what you've learned with in-lesson quizzes, and gradually advance your skills with practice",
         btn: 'Do a quick lesson'
     },
     {
         id: 3,
-        image:imageCard3,
+        image: imageCard3,
         name: 'Tailored to you',
         desc: "Earn a certificate to validate your newly acquired skills.Post it on social for others to see",
         btn: 'Become certified'
     }
+]
+export const card2 = [
+    {
+        id: 1,
+        name: "Learn anywhere, anytime",
+        desc: "On the web or on the go, Sololearn is always ready for you and you'll never lose your place.",
+        qrname: "Get the app now",
+        childImg1: qrcode,
+        image: homeImg,
+        appstoe: Appstore,
+        google_play: GooglePlay,
+    },
+]
+export const card2later = [
+    {
+        id: 1,
+        image: imageCard2,
+        name: "More than 20 courses",
+        desc: "From Python, through data, to web dev. We got everything you need.",
+        btn: "Explore full catalog",
+    }
+]
+// =======================================================
+export const theCardsTitle = 'The perfect platform to boost your technical skills'
+export const TheCardsData = [
+    {
+        id: 1,
+        image: TheImg1,
+        name: "Students",
+        desc: "Prepping for the big test or want to ace your first interview? Use Sololearn's real-world practice to reinforce what you've learned and get you ready for that big moment.",
+        btn: "Learn for  free",
+    },
+    {
+        id: 2,
+        image: TheImg2,
+        name: "Professionals",
+        desc: "You can learn something totally new to advance your career. Or maybe you just want to knock off the rust. Try Sololearn to get access to a variety of courses, from machine learning to web development.",
+        btn: "Bost your career",
+    },
 ]

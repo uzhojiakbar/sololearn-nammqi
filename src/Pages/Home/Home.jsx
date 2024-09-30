@@ -3,6 +3,7 @@ import { HomeUi } from "./style";
 import Header from "../../Components/Header";
 import CarouselComponent from "../../Components/Corusel/Corusell";
 import Cards from "../../Components/Card/Cards";
+import ThePerfect from "../../Components/ThePerfect/ThePerfect";
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
       <Header />
       <CarouselComponent/>
       <Cards/>
+      <ThePerfect/>
     </HomeUi>
   );
 };

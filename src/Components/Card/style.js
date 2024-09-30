@@ -7,7 +7,7 @@ const WrapperBox = styled.div`
     display: grid;
     grid-template-columns: repeat(3,1fr);
     gap: 30px;
-    margin: 0px 50px;
+    margin: 0px 50px 30px;
 `
 
 const Card = styled.div`
@@ -20,7 +20,7 @@ const Card = styled.div`
     align-items: center;
 `
 const Image = styled.img`
-    width: 100%;
+    width: 110%;
 `
 const Title = styled.div`
     color: #2D3846;
@@ -54,20 +54,70 @@ const Wrappdesc = styled.div`
     align-items: center;
 `
 const WrapperChild = styled.div`
-    display: grid;
-    display: flex;
     gap: 30px;
     margin:20px 50px;
+    display: flex;
+    padding-bottom: 50px;
 `
+const WrapItem = styled.div`
+    /* display: flex; */
+   /* justify-content : space-between; */
+`
+const Card2 = styled.div`
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    width: 773px;
+    background: white;
+    border-radius: 8px;
+    padding: 18px 32px 32px;
+    align-items: center;
+    height: 100%;
+`
+const Card3 = styled.div`
+    background-color: white;
+    border-radius: 8px;
+    
 
+`
+const Card2Desc = styled.p`
+    color: #6B7F99;
+    font-size: 20px;
+    margin-top: 15px;
+    line-height: 30px;
+`
+const ImgConteiner = styled.div`
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 10px;
+`
+const ImgConteinerItem1 = styled.img`
+    width: 136px;
+    height: 136px;
+` 
+const ImgConteinerItem2 = styled.img`
+   width: 100%;
+` 
+const ImgConteinerItem3 = styled.img`
+    width:100%;
+`
+// ======================================================= 
+// ======================================================= 
 export {
+    Card2Desc,
+    ImgConteinerItem1,
+    ImgConteinerItem2,
+    ImgConteinerItem3,
+    ImgConteiner,
+    Card3,
+    WrapItem,
     Wrapper,
     WrapperBox,
     Card,
     Image,
     Btn,
     Title,
-    Text, 
+    Text,
     Wrappdesc,
     WrapperChild,
+    Card2,
 }
