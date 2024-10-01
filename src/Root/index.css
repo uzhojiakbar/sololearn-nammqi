@@ -7,6 +7,22 @@
   transition: 0.3s;
 }
 
+.main {
+  max-width: 1920px;
+  width: 100vw;
+  min-width: 320px;
+  margin: 0 auto;
+}
+
+.line {
+  background-color: rgba(255, 255, 255, 0.3);
+  width: 30%;
+  height: 3px;
+  border-radius: 2px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
 :root {
   --loader-color: #3d84f7;
   --loader-bg-color: rgba(255, 255, 255, 0.4);
@@ -21,8 +37,8 @@
 }
 
 ::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+  width: 3px;
+  height: 3px;
 }
 
 ::-webkit-scrollbar-track {

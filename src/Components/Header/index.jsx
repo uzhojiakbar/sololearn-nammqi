@@ -13,6 +13,7 @@ const Header = () => {
           is free!
         </Subtitle>
         <Button>Let's start!</Button>
+        <div className="line"></div>
       </HeroContainer>
     </div>
   );

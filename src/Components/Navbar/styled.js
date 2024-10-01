@@ -1,16 +1,28 @@
 import { RiCloseFill } from "react-icons/ri";
 import styled from "styled-components";
 
+const NavWrapper = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+
+  width: 100vw;
+  height: 80px;
+  background-color: var(--header-backdound);
+`;
+
 const NavbarContainer = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  height: 80px;
-  background-color: var(--header-backdound);
   color: white;
 
   position: relative;
+  margin: 0 auto;
+  max-width: 1920px;
+  width: 100vw;
 `;
 
 const Logo = styled.div`
@@ -92,4 +104,12 @@ const CloseIcon = styled(RiCloseFill)`
   }
 `;
 
-export { CloseIcon, NavbarContainer, NavLink, NavLinks, Logo, Menu };
+export {
+  NavWrapper,
+  CloseIcon,
+  NavbarContainer,
+  NavLink,
+  NavLinks,
+  Logo,
+  Menu,
+};

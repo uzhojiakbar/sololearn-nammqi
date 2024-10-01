@@ -4,7 +4,7 @@ import RouteControl from "../Router/RouteControl";
 
 const Root = () => {
   return (
-    <div>
+    <div className="main">
       <RouteControl />
     </div>
   );

@@ -4,7 +4,8 @@ const HeroContainer = styled.section`
   text-align: center;
   background-color: var(--header-backdound);
   color: white;
-  padding: 100px 20px;
+  height: 600px;
+  padding: 150px 20px;
 `;
 
 const Title = styled.h1`
