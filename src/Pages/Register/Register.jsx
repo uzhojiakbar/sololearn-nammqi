@@ -30,7 +30,8 @@ const Register = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get("/api/account/groupsatt/?format=json");
-      setGroupsAtt(response.data); // Kelgan ma'lumotni state ga yuklash
+      setGroupsAtt([]); // Kelgan ma'lumotni state ga yuklash
+      setGroupsAtt([...response.data]); // Kelgan ma'lumotni state ga yuklash
     } catch (error) {
       console.error("Error fetching the data", error);
     }
@@ -168,10 +169,8 @@ const Register = () => {
                   onChange={handleChange}
                 >
                   <option value="">Kursni tanlang</option>
-                  <option value="">Kursni tanlang</option>
-                  <option value="">Kursni tanlang</option>
-                  <option value="">Kursni tanlang</option>
-                  {/* {GroupsAtt.length
+
+                  {GroupsAtt.length > 0
                     ? GroupsAtt.map((v) => {
                         return (
                           <option key={v.id} value={v?.name}>
@@ -179,7 +178,7 @@ const Register = () => {
                           </option>
                         );
                       })
-                    : ""} */}
+                    : ""}
                 </Select>
               </Label>
             </InputContainer>
