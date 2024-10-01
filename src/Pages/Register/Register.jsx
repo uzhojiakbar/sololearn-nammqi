@@ -169,7 +169,7 @@ const Register = () => {
                   onChange={handleChange}
                 >
                   <option value="">Kursni tanlang</option>
-                  {GroupsAtt?.map((v, i) => {
+                  {GroupsAtt?.map((v) => {
                     return (
                       <option key={v.id} value={v?.name}>
                         {v?.name}
