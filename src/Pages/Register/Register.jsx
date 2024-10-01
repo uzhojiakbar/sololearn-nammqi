@@ -170,7 +170,7 @@ const Register = () => {
                 >
                   <option value="">Kursni tanlang</option>
                   {GroupsAtt.length
-                    ? GroupsAtt?.map((v) => {
+                    ? GroupsAtt.map((v) => {
                         return (
                           <option key={v.id} value={v?.name}>
                             {v?.name}
