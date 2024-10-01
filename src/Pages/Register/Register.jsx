@@ -62,7 +62,6 @@ const Register = () => {
 
     try {
       const response = await axios.post("/api/account/register/", requestData);
-      console.log("Success:", response.data);
       // Muvaffaqiyatli bo'lsa, foydalanuvchini boshqa sahifaga yo'naltirish yoki formani tozalash
     } catch (error) {
       console.error("Error:", error);
@@ -73,7 +72,7 @@ const Register = () => {
     <>
       <Container>
         <FormContainer>
-          <Title onClick={() => console.log(formData)}>Sign Up</Title>
+          <Title>Sign Up</Title>
           <Form onSubmit={handleSubmit}>
             <InputContainer>
               <Label>
