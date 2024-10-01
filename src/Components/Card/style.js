@@ -47,6 +47,9 @@ const Btn = styled.button`
   border: none;
   margin-top: 25px;
   border-radius: 5px;
+  &:hover{
+    background-color: #58b5f3;
+  } 
 `;
 const Wrappdesc = styled.div`
   height: 100%;
@@ -100,9 +103,25 @@ const ImgConteinerItem2 = styled.img`
 const ImgConteinerItem3 = styled.img`
   width: 100%;
 `;
+const Btn2 = styled.button`
+  width: 223px;
+  height: 48px;
+  color: white;
+  color: white;
+  background-color: #40BF9C;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  margin-top: 25px;
+  border-radius: 5px;
+  &:hover{
+    background-color: #4febbe;
+  } 
+`
 // =======================================================
 // =======================================================
 export {
+  Btn2,
   Card2Desc,
   ImgConteinerItem1,
   ImgConteinerItem2,

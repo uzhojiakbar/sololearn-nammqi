@@ -7,6 +7,7 @@ import {
   Title,
   Text,
   Btn,
+  Btn2,
   Wrappdesc,
   WrapperChild,
   Card2,
@@ -63,7 +64,7 @@ function Cards() {
             <ImgConteinerItem2 src={item.image} />
             <Title>{item.name}</Title>
             <Text>{item.desc}</Text>
-            <Btn>{item.btn}</Btn>
+            <Btn2>{item.btn}</Btn2>
           </Card>
         ))}
       </WrapperChild>

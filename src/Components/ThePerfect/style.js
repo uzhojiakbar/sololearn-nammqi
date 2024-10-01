@@ -10,13 +10,13 @@ const Title = styled.h1`
   color: #2d3846;
 `;
 const ContainerCards = styled.div`
-  border: 1px solid white;
-  display: flex;
-  text-align: center;
-  gap: 50px;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 80px;
 `;
 const Cards = styled.div`
   padding: 10px;
+  text-align: center;
 `;
 const Text = styled.h1`
   color: #6b7f99;

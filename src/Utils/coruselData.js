@@ -19,6 +19,19 @@ import Appstore from "../assets/apple_store.png";
 import GooglePlay from "../assets/google_play.png";
 import TheImg1 from "../assets/theCards1.svg";
 import TheImg2 from "../assets/theCards2.svg";
+
+import community from '../assets/community.svg'
+
+import community1 from '../assets/community/community1.png'
+import community2 from '../assets/community/community2.png'
+import community3 from '../assets/community/community8.webp'
+import community4 from '../assets/community/community4.png'
+import community5 from '../assets/community/community5.png'
+import community6 from '../assets/community/community6.webp'
+
+import why1 from '../assets/whyImg/home-why-code-1.svg'
+import why2 from '../assets/whyImg/home-why-code-2.svg'
+import why3 from '../assets/whyImg/home-why-code-3.svg'
 export const coruselData = [
   {
     id: 1,
@@ -258,3 +271,78 @@ export const TheCardsData = [
     btn: "Bost your career",
   },
 ];
+// ========================================================
+export const CommunityData = [
+  {
+    id: 1,
+    title: "Become part of our community",
+    num: '74 895 781',
+    desc: "Share your code or questions and get instant feedback or become a creator and spread your knowledge and experience with our global community of learners.",
+    btn: 'Join today',
+    video: community,
+  }
+]
+export const box1Img = [
+  {
+    id: 1,
+    image: community1,
+    width: 'width'
+  },
+  {
+    id: 2,
+    image: community2,
+  },
+  {
+    id: 3,
+    image: community3,
+    width: 'width'
+  },
+  {
+    id: 4,
+    image: community4,
+  },
+  // {
+  //   id:5,
+  //   image:community5,
+  // },
+  // {
+  //   id:6,
+  //   image:community6,
+  // }
+]
+export const data = [
+  {
+    id: 1,
+    name:"We have helped hundreds of"
+  },
+  {
+    id:2,
+    name:"Designer"
+  },
+  {
+    id:3,
+    name:'to finaly',
+    text2:'land a deream job'
+  }
+]
+// ================================
+export const WhyData = [
+  {
+    id:1,
+    image:why1,
+    name:"It's popular",
+    desc:"Technical skills are in high demand. Over 60% of new jobs worldwide will require tech skills.",
+  },
+  {
+    id:2,
+    image:why2,
+    name:"It's popular",
+    desc:"Technical skills are in high demand. Over 60% of new jobs worldwide will require tech skills.",
+  },
+  {
+    id:3,
+    image:why3,
+    name:"It's popular",
+    desc:"Technical skills are in high demand. Over 60% of new jobs worldwide will require tech skills.",
+  },
+]
