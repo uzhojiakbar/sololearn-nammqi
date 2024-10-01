@@ -11,6 +11,7 @@ import {
   SubmitButton,
   InputContainer,
 } from "./styled";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -27,9 +28,13 @@ const Register = () => {
 
   const [GroupsAtt, setGroupsAtt] = useState([]);
 
+  const nav = useNavigate();
+
   const fetchData = async () => {
     try {
-      const response = await axios.get("/api/account/groupsatt/?format=json");
+      const response = await axios.get(
+        "https://solonammqi.pythonanywhere.com/account/groupsatt/?format=json"
+      );
       setGroupsAtt([]); // Kelgan ma'lumotni state ga yuklash
       setGroupsAtt([...response.data]); // Kelgan ma'lumotni state ga yuklash
     } catch (error) {
@@ -50,6 +55,7 @@ const Register = () => {
   };
 
   const handleSubmit = async (e) => {
+    setLoading(1);
     e.preventDefault();
     const requestData = {
       username: formData.username,
@@ -62,10 +68,19 @@ const Register = () => {
     };
 
     try {
-      const response = await axios.post("/api/account/register/", requestData);
+      const response = await axios.post(
+        "https://solonammqi.pythonanywhere.com/account/register/",
+        requestData
+      );
+      setLoading(0);
       // Muvaffaqiyatli bo'lsa, foydalanuvchini boshqa sahifaga yo'naltirish yoki formani tozalash
+      console.log("ZOR");
+
+      nav("/");
     } catch (error) {
+      setLoading(0);
       console.error("Error:", error);
+      console.error("Error:", error.request.response);
     }
   };
 
