@@ -168,7 +168,10 @@ const Register = () => {
                   onChange={handleChange}
                 >
                   <option value="">Kursni tanlang</option>
-                  {GroupsAtt.length
+                  <option value="">Kursni tanlang</option>
+                  <option value="">Kursni tanlang</option>
+                  <option value="">Kursni tanlang</option>
+                  {/* {GroupsAtt.length
                     ? GroupsAtt.map((v) => {
                         return (
                           <option key={v.id} value={v?.name}>
@@ -176,7 +179,7 @@ const Register = () => {
                           </option>
                         );
                       })
-                    : ""}
+                    : ""} */}
                 </Select>
               </Label>
             </InputContainer>
