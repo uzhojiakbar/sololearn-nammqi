@@ -13,14 +13,14 @@ function Whycode() {
       </Title>
       <CardWrapp>
             {WhyData?.map((item)=>(
-              <Card>
+              <Card key={item.id}>
                 <Img src={item.image} alt="" />
                 <H1>{item.name}</H1>
                 <Card2Desc>{item.desc}</Card2Desc>
               </Card>
             ))}
       </CardWrapp>
-      <NavLink to={'/account/register'}><Btn>I want to code</Btn></NavLink>
+      <NavLink to={'account/sign-in'}><Btn>I want to code</Btn></NavLink>
     </Container>
   )
 }

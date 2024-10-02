@@ -313,36 +313,80 @@ export const box1Img = [
 export const data = [
   {
     id: 1,
-    name:"We have helped hundreds of"
+    name: "We have helped hundreds of"
   },
   {
-    id:2,
-    name:"Designer"
+    id: 2,
+    name: "Designer"
   },
   {
-    id:3,
-    name:'to finaly',
-    text2:'land a deream job'
+    id: 3,
+    name: 'to finaly',
+    text2: 'land a deream job'
   }
 ]
 // ================================
 export const WhyData = [
   {
-    id:1,
-    image:why1,
-    name:"It's popular",
-    desc:"Technical skills are in high demand. Over 60% of new jobs worldwide will require tech skills.",
+    id: 1,
+    image: why1,
+    name: "It's popular",
+    desc: "Technical skills are in high demand. Over 60% of new jobs worldwide will require tech skills.",
   },
   {
-    id:2,
-    image:why2,
-    name:"It's popular",
-    desc:"Technical skills are in high demand. Over 60% of new jobs worldwide will require tech skills.",
+    id: 2,
+    image: why2,
+    name: "It's popular",
+    desc: "Technical skills are in high demand. Over 60% of new jobs worldwide will require tech skills.",
   },
   {
-    id:3,
-    image:why3,
-    name:"It's popular",
-    desc:"Technical skills are in high demand. Over 60% of new jobs worldwide will require tech skills.",
+    id: 3,
+    image: why3,
+    name: "It's popular",
+    desc: "Technical skills are in high demand. Over 60% of new jobs worldwide will require tech skills.",
   },
+]
+// ===========================================
+export const InvetData = [
+  {
+    id: 1,
+    title: 'Invest in yourself with',
+    titleIcon: 'PRO',
+    btn:'Start learning like a pro',
+    cardTitle: 'Unlimited practice',
+    cardNum: '2x',
+    carDesc: "Pro users are twice as likely to incorporate practice in their learning plan",
+  },
+  {
+    id: 2,
+    cardTitle: 'Ad-free experience',
+    cardNum: '+132%',
+    carDesc: "Pro users spend 132% more time learning than regular ones.",
+    small: '+132%'
+
+  },
+  {
+    id: 3,
+    cardTitle: 'Habit formation',
+    cardNum: '92%',
+    carDesc: "Pro users that set up daily goals have the highest lesson completion rate of 92%!",
+    small: '92%!'
+  },
+]
+export const subtext = [
+  {
+    id: 1,
+    text1: "Unlimited practice",
+    text2: "Unlimited practice",
+    text3: "Unlimited practice",
+    text4: "Unlimited practice",
+  }
+]
+export const subtext2 = [
+  {
+    id: 1,
+    text1: "Habit building features",
+    text2: "Lesson shortcuts",
+    text3: "Lesson shortcuts",
+  }
 ]

@@ -1,7 +1,10 @@
-import React from "react";
+import React from 'react'
+import { Wrapper } from './style'
 
-const Login = () => {
-  return <div>Login</div>;
-};
+function Login() {
+  return (
+    <Wrapper>Login</Wrapper>
+  )
+}
 
-export default Login;
+export default Login
