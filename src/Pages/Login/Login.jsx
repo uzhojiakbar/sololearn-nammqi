@@ -1,25 +1,28 @@
-import React, { useEffect, useState } from 'react'
-import { Container, FormContainer, Title, InputContainer, Label, Input, SubmitButton, Form } from '../Register/styled'
-import axios from 'axios'
+import React, { useState } from "react";
+import {
+  Container,
+  FormContainer,
+  Title,
+  InputContainer,
+  Label,
+  Input,
+  SubmitButton,
+  Form,
+} from "../Register/styled";
 function Login() {
-
-  const [loginData, setLoginData] = useState(
-    {
-      email: ",",
-      password: "",
-    }
-  )
+  const [loginData, setLoginData] = useState({
+    email: ",",
+    password: "",
+  });
   const handleChange = (e) => {
-    setLoginData({ ...loginData, [e.target.name]: e.target.value })
-  }
-
+    setLoginData({ ...loginData, [e.target.name]: e.target.value });
+  };
 
   return (
     <Container>
       <FormContainer>
-        <Title>Sign in</Title>
-        <Form  >
-
+        <Title>Hisobga kirish</Title>
+        <Form>
           <InputContainer>
             <Label>
               Email*
@@ -48,12 +51,11 @@ function Login() {
               />
             </Label>
           </InputContainer>
-          <SubmitButton type='sumbit'>Log in</SubmitButton>
+          <SubmitButton type="sumbit">Log in</SubmitButton>
         </Form>
-
       </FormContainer>
     </Container>
-  )
+  );
 }
 
-export default Login
+export default Login;
