@@ -1,12 +1,13 @@
 import React from 'react'
 import { FaWheatAwn } from "react-icons/fa6";
+import { Container } from './style';
 
 function Award() {
   return (
-    <div>
+    <Container>
         <FaWheatAwn/>
         <h1>salo hammga ishlar qaley</h1>
-    </div>
+    </Container>
   )
 }
 
