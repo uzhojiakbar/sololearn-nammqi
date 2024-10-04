@@ -14,12 +14,18 @@ const FormContainer = styled.div`
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   width: 500px;
   text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 `;
 
 const Title = styled.h2`
   font-size: 24px;
   margin-bottom: 20px;
   color: #ffffff;
+  font-weight: 900;
+  font-family: sans-serif;
 `;
 
 const Form = styled.form`
@@ -39,6 +45,10 @@ const Label = styled.label`
   margin-bottom: 10px;
   text-align: left;
   color: #ffffff;
+  font-weight: 900;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 `;
 
 const Input = styled.input`
@@ -49,6 +59,7 @@ const Input = styled.input`
   border-radius: 4px;
   width: 100%;
   box-sizing: border-box;
+  outline: none;
 `;
 
 const Select = styled.select`
@@ -59,6 +70,7 @@ const Select = styled.select`
   border-radius: 4px;
   width: 100%;
   box-sizing: border-box;
+  outline: none;
 `;
 
 const SubmitButton = styled.button`
