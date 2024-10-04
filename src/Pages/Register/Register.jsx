@@ -12,6 +12,7 @@ import {
   InputContainer,
 } from "./styled";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -22,7 +23,18 @@ const Register = () => {
     lastName: "",
     course: "",
     groupName: "",
+    repass: "",
   });
+
+  const notify = (type = "ok", text) => {
+    if (type === "ok") {
+      toast.success(text || "Tayyor");
+    } else if (type === "err") {
+      toast.error(text || "Xato");
+    } else if (type === "wait") {
+      toast.loading(text || "Kuting...");
+    }
+  };
 
   const [loading, setLoading] = useState(1);
 
@@ -64,8 +76,14 @@ const Register = () => {
       first_name: formData.firstName,
       last_name: formData.lastName,
       course: formData.course,
-      group_name: null,
+      group_name: formData.groupName || null,
     };
+
+    if (formData.password !== formData.repass) {
+      notify("err", "Parollar mos emas");
+      setLoading(0);
+      return;
+    }
 
     try {
       const response = await axios.post(
@@ -73,14 +91,32 @@ const Register = () => {
         requestData
       );
       setLoading(0);
-      // Muvaffaqiyatli bo'lsa, foydalanuvchini boshqa sahifaga yo'naltirish yoki formani tozalash
-      console.log("ZOR");
-
-      nav("/");
+      notify("ok", "Ro`yxatdan o`tdingiz");
+      nav("/account/sign-in");
     } catch (error) {
       setLoading(0);
+      if (error.response && error.response.data) {
+        const errorData = error.response.data;
+
+        if (errorData.username) {
+          notify("err", `Username xatolik: ${errorData.username[0]}`);
+        } else if (errorData.email) {
+          notify("err", `Email xatolik: ${errorData.email[0]}`);
+        } else if (errorData.password) {
+          notify("err", `Password xatolik: ${errorData.password[0]}`);
+        } else {
+          notify(
+            "err",
+            "Qandaydur xatolik. Iltimos keyinroq qayta urinib ko'ring."
+          );
+        }
+      } else {
+        notify(
+          "err",
+          "Qandaydur xatolik. Iltimos keyinroq qayta urinib ko'ring."
+        );
+      }
       console.error("Error:", error);
-      console.error("Error:", error.request.response);
     }
   };
 
@@ -88,11 +124,35 @@ const Register = () => {
     <>
       <Container>
         <FormContainer>
-          <Title>Sign Up</Title>
+          <Title>Ro'yxatdan o'tish</Title>
           <Form onSubmit={handleSubmit}>
             <InputContainer>
               <Label>
-                Username*
+                Ismingizni kiriting
+                <Input
+                  type="text"
+                  name="firstName"
+                  maxLength="150"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                />
+              </Label>
+            </InputContainer>
+            <InputContainer>
+              <Label>
+                Familyaninigizni kiriting
+                <Input
+                  type="text"
+                  name="lastName"
+                  maxLength="150"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                />
+              </Label>
+            </InputContainer>
+            <InputContainer>
+              <Label>
+                Foydaluvchi nomi *
                 <Input
                   type="text"
                   name="username"
@@ -108,7 +168,7 @@ const Register = () => {
 
             <InputContainer>
               <Label>
-                Email*
+                E-mail *
                 <Input
                   type="email"
                   name="email"
@@ -121,7 +181,7 @@ const Register = () => {
             </InputContainer>
             <InputContainer>
               <Label>
-                Password*
+                Parol kiriting *
                 <Input
                   type="password"
                   name="password"
@@ -135,38 +195,28 @@ const Register = () => {
             </InputContainer>
             <InputContainer>
               <Label>
-                First Name
+                Parolni takroran kiriting*
                 <Input
-                  type="text"
-                  name="firstName"
-                  maxLength="150"
-                  value={formData.firstName}
+                  type="password"
+                  name="repass"
+                  maxLength="128"
+                  minLength="1"
+                  required
+                  value={formData.repass}
                   onChange={handleChange}
                 />
               </Label>
             </InputContainer>
+
             <InputContainer>
               <Label>
-                Last Name
-                <Input
-                  type="text"
-                  name="lastName"
-                  maxLength="150"
-                  value={formData.lastName}
-                  onChange={handleChange}
-                />
-              </Label>
-            </InputContainer>
-            <InputContainer>
-              <Label>
-                Course
                 <Select
                   name="course"
                   required
                   value={formData.course}
                   onChange={handleChange}
                 >
-                  <option value="">Kursni tanlang</option>
+                  <option value="null">Kursni tanlang</option>
                   <option value="1">1-kurs</option>
                   <option value="2">2-kurs</option>
                   <option value="3">3-kurs</option>
@@ -176,19 +226,17 @@ const Register = () => {
             </InputContainer>
             <InputContainer>
               <Label>
-                Group Name
                 <Select
                   name="groupName"
                   required
                   value={formData.groupName}
                   onChange={handleChange}
                 >
-                  <option value="">Kursni tanlang</option>
-
+                  <option value="null">Guruhni tanlang</option>
                   {!loading
                     ? GroupsAtt.map((v) => {
                         return (
-                          <option key={v.id} value={v?.name}>
+                          <option key={v.id} value={+v?.id || null}>
                             {v?.name}
                           </option>
                         );
