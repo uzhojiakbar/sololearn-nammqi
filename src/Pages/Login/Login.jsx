@@ -59,7 +59,6 @@ function Login() {
                   name="username"
                   maxLength="254"
                   required
-                  // value={formData.email}
                   onChange={handleChange}
                 />
               </Label>
