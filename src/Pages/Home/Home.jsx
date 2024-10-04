@@ -9,6 +9,8 @@ import Whycode from "../../Components/Whycode/Whycode";
 import Invest from "../../Components/Invest/Invest";
 import Hasty from "../../Components/Hasty/Hasty";
 import Award from "../../Components/Award/Award";
+import Form from "../../Components/Form/Form";
+import Footer from "../../Components/Footer/Footer";
 
 const Home = () => {
   return (
@@ -22,6 +24,9 @@ const Home = () => {
       <Invest/>
       <Hasty/>
       <Award/>
+      <Form/>
+      <Footer/>
+
     </HomeUi>
   );
 };
