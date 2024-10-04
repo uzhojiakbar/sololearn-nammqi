@@ -6,8 +6,6 @@ import Cards from "../../Components/Card/Cards";
 import ThePerfect from "../../Components/ThePerfect/ThePerfect";
 import Comuty from "../../Components/Comunty/Comuty";
 import Whycode from "../../Components/Whycode/Whycode";
-import Invest from "../../Components/Invest/Invest";
-import Hasty from "../../Components/Hasty/Hasty";
 
 const Home = () => {
   return (
@@ -18,9 +16,6 @@ const Home = () => {
       <ThePerfect />
       <Comuty/>
       <Whycode/>
-      <Invest/>
-      <Hasty/>
-
     </HomeUi>
   );
 };
