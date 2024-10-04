@@ -8,7 +8,6 @@ import Comuty from "../../Components/Comunty/Comuty";
 import Whycode from "../../Components/Whycode/Whycode";
 import Invest from "../../Components/Invest/Invest";
 import Hasty from "../../Components/Hasty/Hasty";
-import Award from "../../Components/Award/Award";
 
 const Home = () => {
   return (
@@ -21,7 +20,6 @@ const Home = () => {
       <Whycode/>
       <Invest/>
       <Hasty/>
-      <Award/>  
 
     </HomeUi>
   );

@@ -9,7 +9,7 @@ function Hasty() {
         <Container>
             <ContainerItem>
                 {hastyData?.map((item) => (
-                    <div>
+                    <div key={item.id}>
                         <ImageContainer>
                             <Image src={item.image} alt="" />
                             <ImgSmall>
