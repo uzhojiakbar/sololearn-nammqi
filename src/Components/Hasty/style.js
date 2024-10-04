@@ -27,6 +27,7 @@ const H1 = styled.h1`
       color: #2D3846;
       font-size: 64px;
       margin-top: 30px;
+      text-align: center;
 `
 const H3 = styled.h3`
     color: #2493df;

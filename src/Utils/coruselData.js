@@ -391,6 +391,8 @@ export const subtext2 = [
   }
 ]
 
+
+ 
 import hastyImage from '../assets/1160.webp'
 import hastysuccess from '../assets/success.jpg'
 export const hastyData = [

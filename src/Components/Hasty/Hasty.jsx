@@ -2,7 +2,6 @@ import React from 'react'
 import { Btn, BtnWrap, Container, ContainerItem, H1, H3, WrapTitle, Image, ImageContainer, ImgSmall, Image1, P, Apos, ImgSmall1 } from './style'
 import { hastyData } from '../../Utils/coruselData'
 import { Card2Desc } from '../Card/style'
-import { RiDoubleQuotesL } from "react-icons/ri";
 
 function Hasty() {
     return (
