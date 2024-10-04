@@ -344,9 +344,9 @@ export const WhyData = [
     image: why3,
     name: "It's popular",
     desc: "Technical skills are in high demand. Over 60% of new jobs worldwide will require tech skills.",
-<<<<<<< HEAD
-  },
+  }
 ]
+
 // ===========================================
 export const InvetData = [
   {
@@ -363,8 +363,7 @@ export const InvetData = [
     cardTitle: 'Ad-free experience',
     cardNum: '+132%',
     carDesc: "Pro users spend 132% more time learning than regular ones.",
-    small: '+132%'
-
+    small: '+132%',
   },
   {
     id: 3,
@@ -405,51 +404,5 @@ export const hastyData = [
     text: 'Hasty',
     desc: "One day at the library, I noticed a stranger using an app that featured tutorials, questions, and exercises for C++ programming. It was Sololearn. I thought, Neat, learning on your mobile phone I was just starting to learn to code and I made all the usual beginner mistakes, so I gave Sololearn a try. Through Sololearn, I have found many learners who have helped me grow. I have met teachers, engineers, developers, data scientists, and more amazing people. The learning environment created by Sololearn served as a catalyst for me to pick up good practices, which go beyond learning and into the workplace. Hatsy Rei, June 01, 2020",
     btn: "Start your success story"
-=======
->>>>>>> 0b617c2e3b27c97adec9c0c29c45bbbf91186a37
   },
-]
-// ===========================================
-export const InvetData = [
-  {
-    id: 1,
-    title: 'Invest in yourself with',
-    titleIcon: 'PRO',
-    btn:'Start learning like a pro',
-    cardTitle: 'Unlimited practice',
-    cardNum: '2x',
-    carDesc: "Pro users are twice as likely to incorporate practice in their learning plan",
-  },
-  {
-    id: 2,
-    cardTitle: 'Ad-free experience',
-    cardNum: '+132%',
-    carDesc: "Pro users spend 132% more time learning than regular ones.",
-    small: '+132%'
-
-  },
-  {
-    id: 3,
-    cardTitle: 'Habit formation',
-    cardNum: '92%',
-    carDesc: "Pro users that set up daily goals have the highest lesson completion rate of 92%!",
-    small: '92%!'
-  },
-]
-export const subtext = [
-  {
-    id: 1,
-    text1: "Unlimited practice",
-    text2: "Unlimited practice",
-    text3: "Unlimited practice",
-    text4: "Unlimited practice",
-  }
-]
-export const subtext2 = [
-  {
-    id: 1,
-    text1: "Habit building features",
-    text2: "Lesson shortcuts",
-    text3: "Lesson shortcuts",
-  }
 ]
