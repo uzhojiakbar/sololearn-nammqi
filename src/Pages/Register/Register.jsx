@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import {
   Container,
   FormContainer,
@@ -13,6 +12,8 @@ import {
 } from "./styled";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { useSignUp } from "../../Hooks/RegisterHook";
+import { instance } from "../../api/api";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -40,19 +41,32 @@ const Register = () => {
 
   const [GroupsAtt, setGroupsAtt] = useState([]);
 
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [username, setUsername] = useState("");
+
+  const onSuccess = () => {
+    setLoading(0);
+    nav("/account/verify/"); // Navigate to the verify page
+  };
+  const { mutate, isLoading } = useSignUp({
+    setIsSuccess,
+    setUsername,
+    onSuccess,
+  });
+
   const nav = useNavigate();
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(
-        "https://solonammqi.pythonanywhere.com/account/groupsatt/?format=json"
-      );
-      setGroupsAtt([]); // Kelgan ma'lumotni state ga yuklash
-      setGroupsAtt([...response.data]); // Kelgan ma'lumotni state ga yuklash
+      const data = await instance.get("/account/groupsatt/");
+
+      setGroupsAtt([]);
+      setGroupsAtt([...data?.data]);
     } catch (error) {
       console.error("Error fetching the data", error);
     }
   };
+
   useEffect(() => {
     setLoading(1);
     fetchData();
@@ -86,15 +100,12 @@ const Register = () => {
     }
 
     try {
-      const response = await axios.post(
-        "https://solonammqi.pythonanywhere.com/account/register/",
-        requestData
-      );
-      setLoading(0);
-      notify("ok", "Ro`yxatdan o`tdingiz");
-      nav("/account/sign-in");
+      mutate(requestData);
+      // notify("ok", "Ro`yxatdan o`tdingiz");
+      // nav("/account/sign-in");
     } catch (error) {
       setLoading(0);
+
       if (error.response && error.response.data) {
         const errorData = error.response.data;
 
@@ -250,7 +261,7 @@ const Register = () => {
           </Form>
         </FormContainer>
       </Container>
-      {loading ? (
+      {loading || isLoading ? (
         <div className="loaderWindow">
           <div className="loader"></div>
         </div>

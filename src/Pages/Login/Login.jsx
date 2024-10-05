@@ -1,59 +1,124 @@
-import React, { useEffect, useState } from 'react'
-import { Container, FormContainer, Title, InputContainer, Label, Input, SubmitButton, Form } from '../Register/styled'
-import axios from 'axios'
+import React, { useState } from "react";
+import {
+  Container,
+  FormContainer,
+  Title,
+  InputContainer,
+  Label,
+  Input,
+  SubmitButton,
+  Form,
+} from "../Register/styled";
+import { useNavigate } from "react-router-dom";
+import { useSignIn } from "../../Hooks/RegisterHook";
+import toast from "react-hot-toast";
+
 function Login() {
+  const [loading, setLoading] = useState(false);
+  const [loginData, setLoginData] = useState({
+    username: "",
+    password: "",
+  });
 
-  const [loginData, setLoginData] = useState(
-    {
-      email: ",",
-      password: "",
+  const notify = (type = "ok", text) => {
+    if (type === "ok") {
+      toast.success(text || "Tayyor");
+    } else if (type === "err") {
+      toast.error(text || "Xato");
+    } else if (type === "wait") {
+      return toast.loading(text || "Kuting...");
     }
-  )
-  const handleChange = (e) => {
-    setLoginData({ ...loginData, [e.target.name]: e.target.value })
-  }
+  };
 
+  const nav = useNavigate();
+  const { mutate, isLoading } = useSignIn(
+    () => {
+      nav("/profile/"); // Muvaffaqiyatli bo'lganda navigatsiya qilish
+    },
+    (error) => {
+      if (
+        error?.response?.data?.non_field_errors[0] ==
+        "Invalid credentials or unverified account."
+      ) {
+        toast.error("Hisob topilmadi.");
+      } else {
+        notify("err", error.response?.data?.detail || "Qandaydur xatolik."); // Xatoni ko'rsatish
+      }
+    }
+  );
+
+  const handleChange = (e) => {
+    setLoginData({ ...loginData, [e.target.name]: e.target.value });
+  };
+
+  const onLogin = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    const loadingToast = notify("wait", "Kuting..."); // "Kuting..." xabarini ko'rsatish
+
+    const requestData = {
+      username: loginData.username || "",
+      password: loginData.password || "",
+    };
+
+    try {
+      await mutate(requestData); // just call login
+    } catch (error) {
+      setLoading(0);
+      console.error("Login error: ", error);
+    }
+    if (!isLoading) {
+      toast.dismiss(loadingToast); // Xabarni olib tashlash
+    }
+  };
 
   return (
-    <Container>
-      <FormContainer>
-        <Title>Sign in</Title>
-        <Form  >
-
-          <InputContainer>
-            <Label>
-              Email*
-              <Input
-                type="email"
-                name="email"
-                maxLength="254"
-                required
-                // value={formData.email}
-                onChange={handleChange}
-              />
-            </Label>
-          </InputContainer>
-<br />
-          <InputContainer>
-            <Label>
-              Password*
-              <Input
-                type="password"
-                name="password"
-                maxLength="128"
-                minLength="1"
-                required
-                // value={formData.password}
-                onChange={handleChange}
-              />
-            </Label>
-          </InputContainer>
-          <SubmitButton type='sumbit'>Log in</SubmitButton>
-        </Form>
-
-      </FormContainer>
-    </Container>
-  )
+    <>
+      <Container>
+        <FormContainer>
+          <Title>Sign in</Title>
+          <Form onSubmit={onLogin}>
+            <InputContainer>
+              <Label>
+                Foydaluvchi nomini kiriting*
+                <Input
+                  type="text"
+                  name="username"
+                  maxLength="254"
+                  required
+                  value={loginData.username}
+                  onChange={handleChange}
+                />
+              </Label>
+            </InputContainer>
+            <br />
+            <InputContainer>
+              <Label>
+                Password*
+                <Input
+                  type="password"
+                  name="password"
+                  maxLength="128"
+                  minLength="1"
+                  required
+                  value={loginData.password}
+                  onChange={handleChange}
+                />
+              </Label>
+            </InputContainer>
+            <SubmitButton type="submit" disabled={isLoading}>
+              {isLoading ? "Yuklanmoqda..." : "Log in"}
+            </SubmitButton>
+          </Form>
+        </FormContainer>
+      </Container>
+      {isLoading && (
+        <div className="loaderWindow">
+          <div className="loader"></div>
+        </div>
+      )}
+    </>
+  );
 }
 
-export default Login
+export default Login;
