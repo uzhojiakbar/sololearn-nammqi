@@ -17,7 +17,6 @@ export const useSignUp = ({ setIsSuccess, setUsername, onSuccess }) => {
   const mutation = useMutation({
     mutationFn: (data) => instance.post("/account/register/", data),
     onSuccess: (data) => {
-      console.log(data);
       setIsSuccess(true);
       setUsername(data?.data?.username);
       if (onSuccess) {
@@ -63,7 +62,6 @@ export const useSignIn = (onSuccess, onError) => {
   return useMutation({
     mutationFn: (data) => instance.post("/account/login/", data), // API ga so'rov yuborish
     onSuccess: (data) => {
-      console.log(data?.data?.access);
       addToLS("access", data?.data?.access); // Tokenni saqlash
 
       if (onSuccess) {
@@ -89,7 +87,6 @@ export const useVerify = (onSuccess) => {
   const mutation = useMutation({
     mutationFn: (data) => instance.post("/account/verify/", data),
     onSuccess: (data) => {
-      console.log(data);
       if (onSuccess) {
         addToLS("access", data?.data?.access);
         toast.success("Tasdiqlandi va Hisobga kirildi"); // Xabarning muvaffaqiyatli bo'lishi
@@ -112,7 +109,7 @@ export const useGetGroup = () => {
     queryFn: () => instance.get("/account/groupsatt/"),
     refetchOnWindowFocus: false,
     select: (data) => data.data,
-    onSuccess: (data) => console.log(data),
+    onSuccess: () => {},
     onError: (error) => {
       console.log(error);
     },
