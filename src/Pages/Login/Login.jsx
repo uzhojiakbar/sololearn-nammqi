@@ -26,6 +26,7 @@ function Login() {
               <Input
                 type="email"
                 name="email"
+                className='text-black'
                 maxLength="254"
                 required
                 // value={formData.email}
@@ -42,6 +43,7 @@ function Login() {
                 name="password"
                 maxLength="128"
                 minLength="1"
+                
                 required
                 // value={formData.password}
                 onChange={handleChange}

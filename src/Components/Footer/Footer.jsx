@@ -82,6 +82,7 @@ function Footer() {
                 </FootBoxItem>
                 <Text>Made with ❤ by <span style={{ color: "white" }}>Sololearn</span> | <sup>©</sup> 2024</Text>
             </FooterBotBox>
+            <h1 className='text-center text-white text-2xl underline '>salom nima gapla</h1>
         </Container>
     )
 }
