@@ -200,7 +200,7 @@ export const coruselData = [
   //         name: 'Think Careatively with AI'
   //     },
   //     {
-  //         id: 37,
+  //         id: 37,\
   //         name: 'Reserch with AI'
   //     },
   //     {

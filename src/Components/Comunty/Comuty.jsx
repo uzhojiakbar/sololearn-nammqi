@@ -1,46 +1,48 @@
 import React from 'react'
-import { Box1, Box1Img, Box2, Box2Img, Container, Container_Item, Name, Num, Wrapper,P } from './style'
-import { Btn2, Card2Desc, ImgConteinerItem2, Title } from '../Card/style'
 import { box1Img, CommunityData, data } from '../../Utils/coruselData'
 import { NavLink } from 'react-router-dom'
 
 function Comuty() {
     return (
         <section>
+            <div className="bg-[#eaf0f3] flex gap-3 py-[100px]">
+                <div className=' w-[300px] '>
+                    {box1Img?.map((item) => (
+                        <div>
+                            <img src={item.image} alt="logo" className={`mt-12 ${item.width == 'width' ? 'lg:w-[160px] md:w-[100px] w-[50px] ml-10' : 'lg:w-[100px] md:w-[60px] w-[40px]'} rounded-full`} />
+                        </div>
+                    ))}
+                </div>
 
-            <Container>
-                <Box1>
-                    {box1Img.map((item) => (
-                        <Box1Img key={item.id} width={item.width} type="rounded" src={item.image} />
+                <div >
+                    {CommunityData?.map((item) => (
+                        <div className='flex flex-col items-center p-4' >
+                            <h1 className='text-[#2D3846] lg:text-[40px] md:text-[24px] text-[26px] text-center font-bold'>{item.title}</h1>
+                            <h1 className='text-[#2493df] font-bold lg:text-[96px] md:text-[60px] text-[40px] sm:text-[50px] mt-6'>{item.num}</h1>
+                            <p className='text-[#6B7F99] lg:text-[20px]  text-center'>{item.desc}</p>
+                            <button className="w-[223px] max-sm:h-8 max-sm:w-[140px] max-sm:font-[400] max-sm:text-[16px] h-12 bg-[#4fbe9e] text-white text-lg font-bold rounded mt-6 hover:bg-[#4eedc0]">{item.btn}</button>
+                            <img className='mt-12 max-sm:hidden relative scale-[1.3] ' src={item.video} alt="" />
+                        </div>
                     ))}
-                </Box1>
-                <Box2>{CommunityData?.map((item) => (
+                </div>
+
+                <div className=' md:mt-2 lg:mt-0 w-[300px]'>
+                    {box1Img?.map((item) => (
+                        <div>
+                            <img src={item.image} alt="logo" className={`mt-16 ${item.width == 'width' ? 'lg:w-[160px] md:w-[100px] w-[50px]  ' : 'lg:w-[100px] md:w-[60px] w-[40px]'} rounded-full`} />
+                        </div>
+                    ))}
+                </div>
+            </div>
+            <div className="bg-white p-[50px] lg:flex justify-around">
+                {data?.map((item) => (
                     <div key={item.id}>
-                        <Container_Item >
-                            <Title>{item.title}</Title>
-                            <Num>{item.num}</Num>
-                            <Card2Desc>{item.desc}</Card2Desc>
-                            <NavLink to={'/account/register'}>
-                                <Btn2>{item.btn}</Btn2>
-                            </NavLink>
-                            <ImgConteinerItem2 src={item.video} alt="video " />
-                        </Container_Item>
+                        <h1 className="lg:text-[26px] font-bold text-[32px] leading-9 text-[#2D3846]">
+                            {item.name} <a className="text-[#2493DF]">{item.text2}</a>
+                        </h1>
                     </div>
                 ))}
-                </Box2>
-                <Box1>
-                    {box1Img.map((item) => (
-                        <Box2Img key={item.id} width={item.width} type="rounded" src={item.image} />
-                    ))}
-                </Box1>
-            </Container>
-            <Wrapper>
-                {data?.map((item)=>(
-                    <div key={item.id}>
-                        <Name>{item.name} <P>{item.text2}</P></Name>
-                    </div>
-                ))}
-            </Wrapper>
+            </div>
         </section>
     )
 }
