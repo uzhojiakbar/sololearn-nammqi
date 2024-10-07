@@ -19,14 +19,13 @@ const Home = () => {
       <CarouselComponent />
       <Cards />
       <ThePerfect />
-      <Comuty/>
-      <Whycode/>
+      <Comuty />
+      <Whycode />
       {/* <Invest/> */}
       {/* <Hasty/> */}
       {/* <Award/> */}
       {/* <Form/> */}
       {/* <Footer/> */}
-
     </HomeUi>
   );
 };
