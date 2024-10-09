@@ -11,6 +11,7 @@ import {
   SubmitButton,
   Form,
 } from "../Register/styled";
+import Navigating from "../../Components/Navbar/Navbar";
 
 const VerificationPage = () => {
   const [loading, setLoading] = useState(false);
@@ -20,7 +21,7 @@ const VerificationPage = () => {
     code: "",
   });
 
-  const { mutate, isLoading } = useVerify(() => {
+  const { mutate } = useVerify(() => {
     setLoading(1);
     nav("/profile/");
   });
@@ -46,9 +47,10 @@ const VerificationPage = () => {
 
   return (
     <>
-      <Container>
+      <Container className="pt-[80px]">
+        <Navigating />
         <FormContainer>
-          <Title>Kirishni tasdiqlash</Title>
+          <Title>Kirishni tasdiqlang</Title>
           <Form onSubmit={handleSubmit}>
             <InputContainer>
               <Label>

@@ -4,7 +4,8 @@ const HeroContainer = styled.section`
   text-align: center;
   background-color: var(--header-backdound);
   color: white;
-  height: 600px;
+  min-height: 600px;
+  height: fit-content;
   padding: 150px 20px;
 `;
 

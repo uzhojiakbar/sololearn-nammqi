@@ -120,8 +120,13 @@ export const useVerify = (onSuccess) => {
     mutationFn: (data) => instance.post("/account/verify/", data),
     onSuccess: (data) => {
       if (onSuccess) {
+        const getUsername = JSON.parse(data?.config?.data);
+        const username = getUsername?.username;
+
         setCookie("access", data?.data?.access);
         setCookie("login", true);
+        setCookie("username", username);
+
         toast.success("Tasdiqlandi va Hisobga kirildi"); // Xabarning muvaffaqiyatli bo'lishi
         onSuccess(); // Agar onSuccess berilgan bo'lsa, chaqiramiz
       }

@@ -10,8 +10,10 @@ import {
   Form,
 } from "../Register/styled";
 import { useNavigate } from "react-router-dom";
-import { useGetProfile, useSignIn } from "../../Hooks/RegisterHook";
+import { useSignIn } from "../../Hooks/RegisterHook";
 import toast from "react-hot-toast";
+import { SiteTexts } from "../../Utils/texts";
+import Navigating from "../../Components/Navbar/Navbar";
 
 function Login() {
   const [loading, setLoading] = useState(false);
@@ -19,20 +21,6 @@ function Login() {
     username: "",
     password: "",
   });
-
-  const getProfile = (username) => {
-    useGetProfile(username);
-  };
-
-  const notify = (type = "ok", text) => {
-    if (type === "ok") {
-      toast.success(text || "Tayyor");
-    } else if (type === "err") {
-      toast.error(text || "Xato");
-    } else if (type === "wait") {
-      return toast.loading(text || "Kuting...");
-    }
-  };
 
   const nav = useNavigate();
 
@@ -74,13 +62,14 @@ function Login() {
 
   return (
     <>
-      <Container>
+      <Container className="pt-[80px]">
+        <Navigating />
         <FormContainer>
-          <Title>Sign in</Title>
+          <Title>{SiteTexts.signinTextLong}</Title>
           <Form onSubmit={onLogin}>
             <InputContainer>
               <Label>
-                Foydaluvchi nomini kiriting*
+                {SiteTexts.enterUsername}
                 <Input
                   type="text"
                   name="username"
@@ -94,7 +83,7 @@ function Login() {
             <br />
             <InputContainer>
               <Label>
-                Password*
+                {SiteTexts.enterPass}
                 <Input
                   type="password"
                   name="password"
@@ -107,12 +96,12 @@ function Login() {
               </Label>
             </InputContainer>
             <SubmitButton type="submit" disabled={isLoading}>
-              {isLoading ? "Yuklanmoqda..." : "Log in"}
+              {SiteTexts.signInText}
             </SubmitButton>
           </Form>
         </FormContainer>
       </Container>
-      {isLoading && (
+      {loading && (
         <div className="loaderWindow">
           <div className="loader"></div>
         </div>
