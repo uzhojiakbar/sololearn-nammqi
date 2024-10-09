@@ -2,8 +2,9 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { instance } from "../api/api";
 import toast from "react-hot-toast";
 // import { addToLS } from "./localstorageHook";
-import { delCookie, setCookie } from "./cookieHook";
+import { delCookie, getCookie, setCookie } from "./cookieHook";
 import { Navigate, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const notify = (type = "ok", text) => {
   if (type === "ok") {
@@ -60,16 +61,44 @@ export const useSignUp = ({ setIsSuccess, setUsername, onSuccess }) => {
   return mutation;
 };
 
+export const useGetProfile = () => {
+  const accessToken = getCookie("access"); // Cookie'dan access token olish
+  return useQuery({
+    queryKey: ["getProfile"],
+    queryFn: async () => {
+      // Agar username mavjud bo'lsa, so'rovni yuborish
+      const response = await instance.get(`/account/profile/`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`, // Tokenni sarlavhaga qo'shish
+        },
+      });
+      return response.data; // Axiosdan olingan javobdan ma'lumotni qaytarish
+    },
+    refetchOnWindowFocus: false,
+    onSuccess: (data) => {
+      console.log("Profil muvaffaqiyatli olindi.", data);
+    },
+    onError: (error) => {
+      console.error("Profil olishda xatolik:", error);
+      // Xatoliklarni ko'rsatish uchun zarur bo'lsa, toast qo'shishingiz mumkin
+    },
+  });
+};
+
 export const useSignIn = (onSuccess, onError) => {
   return useMutation({
     mutationFn: (data) => instance.post("/account/login/", data), // API ga so'rov yuborish
     onSuccess: (data) => {
+      const getUsername = JSON.parse(data?.config?.data);
+      const username = getUsername?.username;
+
       setCookie("access", data?.data?.access);
       setCookie("login", true);
+      setCookie("username", username);
 
       if (onSuccess) {
         toast.success("Hisobga kirdingiz"); // Muvaffaqiyatli xabar
-        onSuccess(); // Agar onSuccess berilgan bo'lsa, chaqiramiz
+        onSuccess(username); // Agar onSuccess berilgan bo'lsa, chaqiramiz
       }
     },
     onError: (error) => {
@@ -111,20 +140,17 @@ export const useLogOut = () => {
 
   const logOut = () => {
     try {
-      // Cookies ni o'chirish
       delCookie("access");
       delCookie("login");
       delCookie("sessionid");
+      delCookie("username");
+      delCookie("csrftoken");
 
-      // Foydalanuvchiga muvaffaqiyatli chiqish haqida xabar berish
       toast.success("Hisobdan muvaffaqiyatli chiqdingiz!");
-
-      // Navigatsiya qilish (Masalan, bosh sahifaga yoki boshqa sahifaga)
-      navigate("/login"); // Sahifani login yoki boshqa joyga yo'naltirish
+      navigate("/");
     } catch (error) {
-      // Xatolik bo'lganda xabar chiqarish
       toast.error("Chiqishda qandaydur xatolik yuz berdi.");
-      console.log(error); // Konsolga xatoni chiqarish
+      console.log(error);
     }
   };
 
@@ -132,15 +158,16 @@ export const useLogOut = () => {
 };
 
 export const useGetGroup = () => {
-  // useGetGroup deb nomlang
   return useQuery({
     queryKey: ["getGroup"],
     queryFn: () => instance.get("/account/groupsatt/"),
     refetchOnWindowFocus: false,
-    select: (data) => data.data,
-    onSuccess: () => {},
+    select: (data) => data?.data || [],
+    onSuccess: () => {
+      console.log("Guruhlar yuklandi");
+    },
     onError: (error) => {
-      console.log(error);
+      notify("err", "Guruhlarni yuklashda xatolik yuzaga keldi.");
     },
   });
 };

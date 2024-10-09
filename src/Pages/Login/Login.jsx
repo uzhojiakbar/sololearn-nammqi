@@ -10,7 +10,7 @@ import {
   Form,
 } from "../Register/styled";
 import { useNavigate } from "react-router-dom";
-import { useSignIn } from "../../Hooks/RegisterHook";
+import { useGetProfile, useSignIn } from "../../Hooks/RegisterHook";
 import toast from "react-hot-toast";
 
 function Login() {
@@ -19,6 +19,10 @@ function Login() {
     username: "",
     password: "",
   });
+
+  const getProfile = (username) => {
+    useGetProfile(username);
+  };
 
   const notify = (type = "ok", text) => {
     if (type === "ok") {
@@ -31,18 +35,19 @@ function Login() {
   };
 
   const nav = useNavigate();
+
   const { mutate, isLoading } = useSignIn(
     () => {
       nav("/profile/"); // Muvaffaqiyatli bo'lganda navigatsiya qilish
     },
     (error) => {
       if (
-        error?.response?.data?.non_field_errors[0] ==
+        error?.response?.data?.non_field_errors[0] ===
         "Invalid credentials or unverified account."
       ) {
         toast.error("Hisob topilmadi.");
       } else {
-        notify("err", error.response?.data?.detail || "Qandaydur xatolik."); // Xatoni ko'rsatish
+        toast.error(error.response?.data?.detail || "Qandaydur xatolik."); // Xatoni ko'rsatish
       }
     }
   );
@@ -54,21 +59,16 @@ function Login() {
   const onLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const loadingToast = notify("wait", "Kuting..."); // "Kuting..." xabarini ko'rsatish
-
     const requestData = {
       username: loginData.username || "",
       password: loginData.password || "",
     };
 
     try {
-      await mutate(requestData); // just call login
+      await mutate(requestData); // Just call login
     } catch (error) {
       setLoading(0);
       console.error("Login error: ", error);
-    }
-    if (!isLoading) {
-      toast.dismiss(loadingToast); // Xabarni olib tashlash
     }
   };
 
