@@ -115,7 +115,6 @@ export const useSignIn = (onSuccess, onError) => {
 };
 
 export const useVerify = (onSuccess) => {
-  // onSuccess ni parametr sifatida olamiz
   const mutation = useMutation({
     mutationFn: (data) => instance.post("/account/verify/", data),
     onSuccess: (data) => {
@@ -127,8 +126,8 @@ export const useVerify = (onSuccess) => {
         setCookie("login", true);
         setCookie("username", username);
 
-        toast.success("Tasdiqlandi va Hisobga kirildi"); // Xabarning muvaffaqiyatli bo'lishi
-        onSuccess(); // Agar onSuccess berilgan bo'lsa, chaqiramiz
+        toast.success("Tasdiqlandi va Hisobga kirildi");
+        onSuccess();
       }
     },
     onError: (error) => {
@@ -137,7 +136,7 @@ export const useVerify = (onSuccess) => {
     },
   });
 
-  return mutation; // mutation ob'ektini qaytaramiz
+  return mutation;
 };
 
 export const useLogOut = () => {
