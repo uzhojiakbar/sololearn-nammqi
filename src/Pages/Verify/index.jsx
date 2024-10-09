@@ -36,6 +36,7 @@ const VerificationPage = () => {
     };
 
     await mutate(requestData);
+    setLoading(0);
   };
 
   const handleChange = (e) => {
