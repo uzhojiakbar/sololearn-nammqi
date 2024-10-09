@@ -9,7 +9,7 @@ function Whycode() {
       <h1 className="text-4xl md:text-6xl text-[#2D3846] flex items-center gap-4 font-bold">
         Why{" "}
         <span className="font-mono font-medium text-[#2493DF] bg-[#c0e3f6] px-2 py-1 rounded-md flex items-center">
-          code <div className="slesh"></div>
+          code .. <div className="slesh"></div>
         </span>
       </h1>
 
