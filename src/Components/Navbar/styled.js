@@ -10,7 +10,6 @@ const NavWrapper = styled.div`
   width: 100vw;
   min-height: 80px;
   height: fit-content;
-  background-color: var(--header-backdound);
 `;
 
 const NavbarContainer = styled.nav`
@@ -102,6 +101,36 @@ const CloseIcon = styled(RiCloseFill)`
   }
 `;
 
+const ProfileBar = styled.div`
+  border: 1px solid rgba(0, 0, 0, 0.7);
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+  background-color: rgba(201, 193, 193, 0.2);
+  border-radius: 50%;
+
+  &:hover {
+    background-color: rgba(201, 193, 193, 0.4);
+  }
+
+  &:active {
+    background-color: rgba(201, 193, 193, 0.1);
+  }
+
+  > img {
+    width: 80%;
+    height: 80%;
+  }
+  > b {
+    font-size: 20px;
+  }
+`;
+
 export {
   NavWrapper,
   CloseIcon,
@@ -110,4 +139,5 @@ export {
   NavLinks,
   Logo,
   Menu,
+  ProfileBar,
 };

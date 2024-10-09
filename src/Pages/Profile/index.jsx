@@ -1,6 +1,7 @@
 import React from "react";
 import { useGetProfile, useLogOut } from "../../Hooks/RegisterHook";
 // import { getCookie } from "../../Hooks/cookieHook";
+import Navigating from "../../Components/Navbar/Navbar";
 
 const Profile = () => {
   const logOut = useLogOut(); // logOut hookni olish
@@ -11,11 +12,9 @@ const Profile = () => {
   };
 
   return (
-    <div>
-      Profile:
-      <button onClick={logOut}>Log Out</button>
-      <br />
-      <button onClick={Prof1le}>click me</button>
+    <div className="pt-[120px]">
+      <Navigating login="1" />
+      <button onClick={logOut}>Log Out</button>s{" "}
     </div>
   );
 };
