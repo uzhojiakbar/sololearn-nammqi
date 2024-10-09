@@ -1,7 +1,9 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { instance } from "../api/api";
 import toast from "react-hot-toast";
-import { addToLS } from "./localstorageHook";
+// import { addToLS } from "./localstorageHook";
+import { delCookie, setCookie } from "./cookieHook";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const notify = (type = "ok", text) => {
   if (type === "ok") {
@@ -62,7 +64,8 @@ export const useSignIn = (onSuccess, onError) => {
   return useMutation({
     mutationFn: (data) => instance.post("/account/login/", data), // API ga so'rov yuborish
     onSuccess: (data) => {
-      addToLS("access", data?.data?.access); // Tokenni saqlash
+      setCookie("access", data?.data?.access);
+      setCookie("login", true);
 
       if (onSuccess) {
         toast.success("Hisobga kirdingiz"); // Muvaffaqiyatli xabar
@@ -88,7 +91,8 @@ export const useVerify = (onSuccess) => {
     mutationFn: (data) => instance.post("/account/verify/", data),
     onSuccess: (data) => {
       if (onSuccess) {
-        addToLS("access", data?.data?.access);
+        setCookie("access", data?.data?.access);
+        setCookie("login", true);
         toast.success("Tasdiqlandi va Hisobga kirildi"); // Xabarning muvaffaqiyatli bo'lishi
         onSuccess(); // Agar onSuccess berilgan bo'lsa, chaqiramiz
       }
@@ -100,6 +104,31 @@ export const useVerify = (onSuccess) => {
   });
 
   return mutation; // mutation ob'ektini qaytaramiz
+};
+
+export const useLogOut = () => {
+  const navigate = useNavigate(); // navigate hook dan foydalanamiz
+
+  const logOut = () => {
+    try {
+      // Cookies ni o'chirish
+      delCookie("access");
+      delCookie("login");
+      delCookie("sessionid");
+
+      // Foydalanuvchiga muvaffaqiyatli chiqish haqida xabar berish
+      toast.success("Hisobdan muvaffaqiyatli chiqdingiz!");
+
+      // Navigatsiya qilish (Masalan, bosh sahifaga yoki boshqa sahifaga)
+      navigate("/login"); // Sahifani login yoki boshqa joyga yo'naltirish
+    } catch (error) {
+      // Xatolik bo'lganda xabar chiqarish
+      toast.error("Chiqishda qandaydur xatolik yuz berdi.");
+      console.log(error); // Konsolga xatoni chiqarish
+    }
+  };
+
+  return logOut; // logOut funksiyasini qaytaramiz
 };
 
 export const useGetGroup = () => {
