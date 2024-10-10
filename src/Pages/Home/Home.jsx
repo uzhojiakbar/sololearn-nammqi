@@ -25,7 +25,7 @@ const Home = () => {
       <Hasty/>
       <Award/>
       <Form/>
-      {/* <Footer/> */}
+      <Footer/>
     </HomeUi>
   );
 };

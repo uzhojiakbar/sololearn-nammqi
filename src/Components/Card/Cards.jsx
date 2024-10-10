@@ -6,7 +6,7 @@ function Cards() {
   return (
     <div>
       <div className="bg-[#F2F5F7] " >
-        <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-8 border2 my-12 pt-4 px-10 ">
+        <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-8 border2  pt-6 px-10 ">
           {CardsData?.map((item) => (
             <div key={item.id} className="bg-white rounded-sm px-4 pb-6 text-center flex flex-col justify-between items-center ">
               <img src={item.image} alt="" />
@@ -47,7 +47,7 @@ function Cards() {
               <img src={image} alt="" className=" w-[100%] " />
             </div>
             {card2later?.map((item) => (
-              <div key={item.id} className="bg-white lg:block hidden lg:w-[33%] rounded-sm px-4 pb-6 text-center flex flex-col justify-between items-center ">
+              <div key={item.id} className="bg-white lg:block hidden lg:w-[32.5%] rounded-sm px-4 pb-6 text-center flex flex-col justify-between items-center ">
                 <img src={item.image} alt="" />
                 <p className="lg:text-4xl text-[#2D3846] font-[600] sm:text-xl">{item.name}</p>
                 <p className="text-[#6B7F99] lg:text-[20px] mt-2">{item.desc}</p>
