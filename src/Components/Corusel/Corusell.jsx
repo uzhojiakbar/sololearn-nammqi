@@ -6,10 +6,25 @@ import { coruselData } from "../../Utils/coruselData";
 
 const CarouselComponent = () => {
 
-  const [count, setCount] = useState(1)
-  if (window.innerWidth > 1024) {
-    
-  }
+  const updateSlideCount = () => {
+    if (window.innerWidth > 1024) {
+      setCount(4);
+    } else if (window.innerWidth > 767) {
+      setCount(3);
+    } else if (window.innerWidth > 640) {
+      setCount(2);
+    } else {
+      setCount(1);
+    }
+  };
+
+  useEffect(() => {
+    updateSlideCount(); // initially set the count based on current width
+    window.addEventListener("resize", updateSlideCount); // update on window resize
+    return () => {
+      window.removeEventListener("resize", updateSlideCount); // cleanup on component unmount
+    };
+  }, []);
 
   const settings = {
     infinite: true,
