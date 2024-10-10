@@ -83,7 +83,7 @@ const Card3 = styled.div`
   border-radius: 8px;
 `;
 const Card2Desc = styled.p`
-  color: #6b7f99;
+ 
   font-size: 20px;
   margin-top: 15px;
   line-height: 30px;
