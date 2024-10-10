@@ -8,15 +8,13 @@ const NavWrapper = styled.div`
   z-index: 1;
 
   width: 100vw;
-  height: 80px;
+  min-height: 80px;
+  height: fit-content;
   background-color: var(--header-backdound);
 `;
 
 const NavbarContainer = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
+  padding: 0 20px;
   color: white;
 
   position: relative;

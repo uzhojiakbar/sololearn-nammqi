@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useSignUp } from "../../Hooks/RegisterHook";
 import { instance } from "../../api/api";
+import Navigating from "../../Components/Navbar/Navbar";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -133,7 +134,9 @@ const Register = () => {
 
   return (
     <>
-      <Container>
+      <Container className="pt-[80px]">
+        <Navigating />
+
         <FormContainer>
           <Title>Ro'yxatdan o'tish</Title>
           <Form onSubmit={handleSubmit}>

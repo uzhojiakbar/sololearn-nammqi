@@ -102,6 +102,20 @@
   }
 }
 
-.text{
+.text {
   color: #3a305b;
+}
+
+input {
+  color: black;
+  text-transform: lowercase;
+}
+
+/* *Input typeda shundoq ham text-transform ishlamaydi */
+/* input[type="password"] {
+  text-transform: none; 
+} */
+
+select {
+  color: black;
 }

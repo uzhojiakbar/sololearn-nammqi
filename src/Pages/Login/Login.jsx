@@ -12,6 +12,8 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useSignIn } from "../../Hooks/RegisterHook";
 import toast from "react-hot-toast";
+import { SiteTexts } from "../../Utils/texts";
+import Navigating from "../../Components/Navbar/Navbar";
 
 function Login() {
   const [loading, setLoading] = useState(false);
@@ -20,29 +22,20 @@ function Login() {
     password: "",
   });
 
-  const notify = (type = "ok", text) => {
-    if (type === "ok") {
-      toast.success(text || "Tayyor");
-    } else if (type === "err") {
-      toast.error(text || "Xato");
-    } else if (type === "wait") {
-      return toast.loading(text || "Kuting...");
-    }
-  };
-
   const nav = useNavigate();
+
   const { mutate, isLoading } = useSignIn(
     () => {
       nav("/profile/"); // Muvaffaqiyatli bo'lganda navigatsiya qilish
     },
     (error) => {
       if (
-        error?.response?.data?.non_field_errors[0] ==
+        error?.response?.data?.non_field_errors[0] ===
         "Invalid credentials or unverified account."
       ) {
         toast.error("Hisob topilmadi.");
       } else {
-        notify("err", error.response?.data?.detail || "Qandaydur xatolik."); // Xatoni ko'rsatish
+        toast.error(error.response?.data?.detail || "Qandaydur xatolik."); // Xatoni ko'rsatish
       }
     }
   );
@@ -54,33 +47,29 @@ function Login() {
   const onLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const loadingToast = notify("wait", "Kuting..."); // "Kuting..." xabarini ko'rsatish
-
     const requestData = {
       username: loginData.username || "",
       password: loginData.password || "",
     };
 
     try {
-      await mutate(requestData); // just call login
+      await mutate(requestData); // Just call login
     } catch (error) {
       setLoading(0);
       console.error("Login error: ", error);
-    }
-    if (!isLoading) {
-      toast.dismiss(loadingToast); // Xabarni olib tashlash
     }
   };
 
   return (
     <>
-      <Container>
+      <Container className="pt-[80px]">
+        <Navigating />
         <FormContainer>
-          <Title>Sign in</Title>
+          <Title>{SiteTexts.signinTextLong}</Title>
           <Form onSubmit={onLogin}>
             <InputContainer>
               <Label>
-                Foydaluvchi nomini kiriting*
+                {SiteTexts.enterUsername}
                 <Input
                   type="text"
                   name="username"
@@ -94,7 +83,7 @@ function Login() {
             <br />
             <InputContainer>
               <Label>
-                Password*
+                {SiteTexts.enterPass}
                 <Input
                   type="password"
                   name="password"
@@ -107,12 +96,12 @@ function Login() {
               </Label>
             </InputContainer>
             <SubmitButton type="submit" disabled={isLoading}>
-              {isLoading ? "Yuklanmoqda..." : "Log in"}
+              {SiteTexts.signInText}
             </SubmitButton>
           </Form>
         </FormContainer>
       </Container>
-      {isLoading && (
+      {loading && (
         <div className="loaderWindow">
           <div className="loader"></div>
         </div>
