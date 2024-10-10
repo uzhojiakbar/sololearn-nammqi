@@ -286,20 +286,51 @@ export const box1Img = [
   {
     id: 1,
     image: community1,
-    width: 'width'
+    width: '30%'
+
   },
   {
     id: 2,
     image: community2,
+    width: '20%',
+    lefttt:10
   },
   {
     id: 3,
     image: community3,
-    width: 'width'
+    width: '40%'
   },
   {
     id: 4,
     image: community4,
+    width: '21%',
+    lefttt:16
+
+  },
+  {
+    id: 5,
+    image: community4,
+    width:'30%'
+  },
+  {
+    id: 6,
+    image: community4,
+    width:'21%',
+    lefttt:6
+
+  },
+  {
+    id: 8,
+    image: community4,
+    width: '25%'
+
+  },
+  {
+    id: 9,
+    image: community4,
+    width:'15%',
+    lefttt:12
+
   },
   // {
   //   id:5,
@@ -392,7 +423,7 @@ export const subtext2 = [
 ]
 
 
- 
+
 import hastyImage from '../assets/1160.webp'
 import hastysuccess from '../assets/success.jpg'
 export const hastyData = [
