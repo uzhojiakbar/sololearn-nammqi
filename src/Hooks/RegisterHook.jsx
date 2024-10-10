@@ -16,6 +16,30 @@ const notify = (type = "ok", text) => {
   }
 };
 
+export const useGetProfile = () => {
+  const accessToken = getCookie("access"); // Cookie'dan access token olish
+  return useQuery({
+    queryKey: ["getProfile"],
+    queryFn: async () => {
+      // Agar username mavjud bo'lsa, so'rovni yuborish
+      const response = await instance.get(`/account/profile/`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`, // Tokenni sarlavhaga qo'shish
+        },
+      });
+      return response.data; // Axiosdan olingan javobdan ma'lumotni qaytarish
+    },
+    refetchOnWindowFocus: false,
+    onSuccess: (data) => {
+      console.log("Profil muvaffaqiyatli olindi.", data);
+    },
+    onError: (error) => {
+      console.error("Profil olishda xatolik:", error);
+      // Xatoliklarni ko'rsatish uchun zarur bo'lsa, toast qo'shishingiz mumkin
+    },
+  });
+};
+
 export const useSignUp = ({ setIsSuccess, setUsername, onSuccess }) => {
   const mutation = useMutation({
     mutationFn: (data) => instance.post("/account/register/", data),
@@ -59,30 +83,6 @@ export const useSignUp = ({ setIsSuccess, setUsername, onSuccess }) => {
   });
 
   return mutation;
-};
-
-export const useGetProfile = () => {
-  const accessToken = getCookie("access"); // Cookie'dan access token olish
-  return useQuery({
-    queryKey: ["getProfile"],
-    queryFn: async () => {
-      // Agar username mavjud bo'lsa, so'rovni yuborish
-      const response = await instance.get(`/account/profile/`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`, // Tokenni sarlavhaga qo'shish
-        },
-      });
-      return response.data; // Axiosdan olingan javobdan ma'lumotni qaytarish
-    },
-    refetchOnWindowFocus: false,
-    onSuccess: (data) => {
-      console.log("Profil muvaffaqiyatli olindi.", data);
-    },
-    onError: (error) => {
-      console.error("Profil olishda xatolik:", error);
-      // Xatoliklarni ko'rsatish uchun zarur bo'lsa, toast qo'shishingiz mumkin
-    },
-  });
 };
 
 export const useSignIn = (onSuccess, onError) => {
@@ -172,6 +172,23 @@ export const useGetGroup = () => {
     },
     onError: (error) => {
       notify("err", "Guruhlarni yuklashda xatolik yuzaga keldi.");
+    },
+  });
+};
+
+export const useGetGroupName = (id) => {
+  return useQuery({
+    queryKey: ["getGroupName"],
+    queryFn: async () => {
+      const response = await instance.get(`/account/groupsatt/${id}/`);
+      return response.data;
+    },
+    refetchOnWindowFocus: false,
+    onSuccess: (data) => {
+      console.log("Guruh muvaffaqiyatli olindi.", data);
+    },
+    onError: (error) => {
+      console.error("Guruh olishda xatolik:", error);
     },
   });
 };
