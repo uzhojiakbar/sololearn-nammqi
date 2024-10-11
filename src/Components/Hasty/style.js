@@ -12,7 +12,7 @@ const Btn = styled.button`
   padding: 0 50px;
   height: 48px;
   color: white;
-  color: white;
+  color: white; 
   background-color: #2493df;
   font-size: 16px;
   font-weight: bold;

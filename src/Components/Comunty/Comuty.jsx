@@ -6,17 +6,17 @@ function Comuty() {
     return (
         <section>
             <div className="bg-[#eaf0f3] flex gap-3 py-[100px]">
-                <div className=' w-[300px] '>
+                <div className='w-[20%] border  '>
                     {box1Img?.map((item) => (
-                        <div>
-                            <img src={item.image} alt="logo" className={`mt-12 ${item.width == 'width' ? 'lg:w-[160px] md:w-[100px] w-[50px] ml-10' : 'lg:w-[100px] md:w-[60px] w-[40px]'} rounded-full`} />
+                        <div key={item.id}>
+                            <img src={item.image} alt="logo"
+                                className={`mt-12 rounded-full w-[${item?.width}] `} />
                         </div>
                     ))}
                 </div>
-
                 <div >
                     {CommunityData?.map((item) => (
-                        <div className='flex flex-col items-center p-4' >
+                        <div key={item.id} className='flex flex-col items-center p-4' >
                             <h1 className='text-[#2D3846] lg:text-[40px] md:text-[24px] text-[26px] text-center font-bold'>{item.title}</h1>
                             <h1 className='text-[#2493df] font-bold lg:text-[96px] md:text-[60px] text-[40px] sm:text-[50px] mt-6'>{item.num}</h1>
                             <p className='text-[#6B7F99] lg:text-[20px]  text-center'>{item.desc}</p>
@@ -25,11 +25,11 @@ function Comuty() {
                         </div>
                     ))}
                 </div>
-
-                <div className=' md:mt-2 lg:mt-0 w-[300px]'>
+                <div className='w-[20%] border flex flex-col items-end '>
                     {box1Img?.map((item) => (
-                        <div>
-                            <img src={item.image} alt="logo" className={`mt-16 ${item.width == 'width' ? 'lg:w-[160px] md:w-[100px] w-[50px]  ' : 'lg:w-[100px] md:w-[60px] w-[40px]'} rounded-full`} />
+                        <div key={item.id}>
+                            <img src={item.image} alt="logo"
+                                className={`mt-12 rounded-full w-[${item?.width}] `} />
                         </div>
                     ))}
                 </div>
