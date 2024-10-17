@@ -7,6 +7,7 @@ import VerificationPage from "../Pages/Verify";
 import NotAuth from "../Components/Navigates/NotAuth";
 import Profile from "../Pages/Profile";
 import UserRoute from "../Components/Navigates/ProfileRoute";
+import Blog from "../Components/Blog/Blog";
 
 const RouteControl = () => {
   return (
@@ -44,6 +45,7 @@ const RouteControl = () => {
         }
       />
       <Route path="/profile" element={<Profile />} />
+      <Route path="/blog" element={<Blog/> } />
       <Route path="*" element={<h1>Not Found</h1>} />
     </Routes>
   );
