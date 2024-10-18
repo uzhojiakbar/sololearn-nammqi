@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import { CiSearch } from "react-icons/ci";
 import { IoIosClose } from "react-icons/io";
-import { blogsData } from '../../Utils/blogData';
+import { blogPost, blogsData } from '../../Utils/blogData';
 import { MdOutlineTimer } from "react-icons/md";
 function Blog() {
     const [values, setValues] = useState('')
-    console.log(values)
     const clearFunc = () => {
         setValues("")
     }
@@ -14,16 +13,16 @@ function Blog() {
     return (
         <div className='lg:p-24 md:p-12 p-6'>
             <h1 className='text-3xl font-bold text-center'>Blog</h1>
-            <div className='border lg:flex   gap-12 mt-20 justify-center'>
+            <div className='lg:flex gap-12 mt-20 justify-center'>
 
-                <div className='border border-red-500 lg:w-[75%] w-full max-w-[900px] p-2 '>
+                <div className=' lg:w-[75%] w-full max-w-[900px] p-2 '>
                     <div className='flex  gap-8'>
-                        <div className='w-[75%] relative'>
-                            <h1 className='absolute top-[50%] translate-y-[-50%] text-3xl left-3'><CiSearch /></h1>
-                            <input onChange={(e) => setValues(e.target.value)} value={values} type="text" className='border-2 w-full rounded-[8px] border-blue-500 pl-12 pr-12 h-[60px] text-2xl outline-none' placeholder='Search...' />
-                            {values.length > 0 ? < span onClick={clearFunc} className='text-2xl cursor-pointer block absolute top-[50%] translate-y-[-50%] right-3'>< IoIosClose /></span> : ''}
+                        <div className='w-[75%] max-sm:w-full relative'>
+                            <h1 className='absolute top-[50%] translate-y-[-50%] text-3xl sm:left-3 max-sm:right-6'><CiSearch /></h1>
+                            <input onChange={(e) => setValues(e.target.value)} value={values} type="text" className='border-2 w-full rounded-[8px] border-blue-500 pl-6 sm:pl-12 pr-12 h-[60px] text-2xl outline-none ' placeholder='Search...' />
+                            {values.length > 0 ? < span onClick={clearFunc} className='text-2xl cursor-pointer block absolute top-[50%] translate-y-[-50%] right-3 max-sm:hidden'>< IoIosClose /></span> : ''}
                         </div>
-                        <button className='border-2 border-blue-500 w-[25%]  py-2 rounded-[8px] text-xl font-bold text-blue-500'>Search</button>
+                        <button className='border-2 border-blue-500 w-[25%] py-2 rounded-[8px] text-xl font-bold text-blue-500 max-sm:hidden'>Search</button>
                     </div>
 
                     <div className='mt-16 grid md:grid-cols-2 grid-cols-1 gap-6 '>
@@ -40,10 +39,19 @@ function Blog() {
                     </div>
 
                 </div>
-                <div className='border border-blue-500 w-[25%]'>
-                    <h1 className='text-[#2D3846] text-xl font-[600]'>
-                        MOst populars blogspost
-                    </h1>
+                <div className='lg:mt-0 mt-1 lg:w-[25%] lg:p-3 lg:pr-6 '>
+                    <div className='sticky gap-6  top-20 max-sm:hidden sm:flex lg:block '>
+                        <div className="">
+                            <h1 className='text-[#2D3846] text-xl font-[600]'>MOst populars blogspost</h1>
+                            {blogPost?.map((item) => (
+                                <div key={item.id} className='bg-[#F2F5F7] font-[600] rounded-lg p-3 text-[#2D3846] mt-2'>
+                                    <p className=''>{item.title} </p>
+                                    <p className='text-[14px]'>{item.subtitle}</p>
+                                </div>
+                            ))}
+                        </div>
+                        <h1 className=' text-[#2D3846] text-xl font-[600] lg:mt-4 mt-10  '>Leran on the go!</h1>
+                    </div>
                 </div>
             </div>
         </div >

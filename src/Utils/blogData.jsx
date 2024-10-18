@@ -50,7 +50,7 @@ export const blogsData = [
     },
 
     {
-        id: 2,
+        id: 7,
         name: 'GUIDES',
         nabeBg: 'bg-green-600',
         title: 'How to improve your Google Ads compaingns using scripts?',
@@ -82,5 +82,27 @@ export const blogsData = [
         title: 'What is a server and how does it work?',
         subtitle: '2 min read',
         bgclolor: 'cyan'
+    },
+]
+export const blogPost = [
+    {
+        id:1,
+        title:"How to add comments IN html",
+        subtitle:"4 min read"
+    },
+    {
+        id:2,
+        title:"How to create HTML list",
+        subtitle:"5 min read"
+    },
+    {
+        id:3,
+        title:"What is server a and how does it work",
+        subtitle:"4 min read"
+    },
+    {
+        id:4,
+        title:"What is server a and how does it work",
+        subtitle:"4 min read"
     },
 ]
