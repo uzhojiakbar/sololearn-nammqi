@@ -9,8 +9,6 @@ import {
   Title,
   Wrapper,
 } from "./style";
-import { coruselData } from "../../Utils/coruselData";
-
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
