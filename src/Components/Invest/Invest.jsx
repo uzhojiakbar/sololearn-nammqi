@@ -54,11 +54,9 @@ function Invest() {
                     </h2>
                 </div>
             ))}
-            <div className="flex justify-center mt-10">
-                <NavLink to={'account/sign-in'} className={'w-full flex  justify-center'}>
-                    <button className="bg-[#FFA310] text-black font-bold max-sm:w-[70%] max-sm:h-12  mt-12 w-[60%] h-[60px] rounded-md max-sm:text-sm text-lg">
-                        {btn}
-                    </button>
+            <Box>
+                <NavLink to={'account/sign-in'}>
+                    <Btn>{btn}</Btn>
                 </NavLink>
             </div>
         </div>

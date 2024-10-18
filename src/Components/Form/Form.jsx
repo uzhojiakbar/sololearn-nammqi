@@ -2,14 +2,14 @@ import React from 'react';
 
 function Form() {
     return (
-        <div className="bg-gray-900 max-sm:p-8 p-12 lg:flex lg:items-center justify-between lg:gap-16 space-y-6">
-            <h1 className="text-white text-4xl max-sm:text-2xl lg:text-[36px] text-center font-bold ">Join our community of learners</h1>
-            <div className="lg:mx-12 w-[400px] max-sm:w-[350px] mx-auto ">
-                <form className="bg-gray-200 px-4 py-3 max-sm:p-4 rounded-lg">
-                    <h2 className="text-2xl font-bold text-gray-800 text-center">Sign in</h2>
-                    <label className="block mt-3">
-                        <span className=" font-bold text-gray-800">Name</span>
-                        <input type="text" className="mt-2 px-2 py-2 border border-gray-300 rounded-md w-full" />
+        <Container>
+            <H1>Join our community of learners</H1>
+            <FormContainer>
+                <FormCont>
+                    <Title>sign in</Title>
+                    <label>
+                        <Span>Name</Span>
+                        <Input type="text" /><br />
                     </label>
                     <label className="block mt-3">
                         <span className=" font-bold text-gray-800">Email</span>

@@ -43,15 +43,6 @@ function Cards() {
                     </div>
                   </div>
                 </div>
-              ))}
-              <img src={image} alt="" className=" w-[100%] " />
-            </div>
-            {card2later?.map((item) => (
-              <div key={item.id} className="bg-white lg:block hidden lg:w-[32.5%] rounded-sm px-4 pb-6 text-center flex flex-col justify-between items-center ">
-                <img src={item.image} alt="" />
-                <p className="lg:text-4xl text-[#2D3846] font-[600] sm:text-xl">{item.name}</p>
-                <p className="text-[#6B7F99] lg:text-[20px] mt-2">{item.desc}</p>
-                <button className="w-[223px]  h-12 text-white bg-[#40BF9C] hover:bg-[#4febbe]  font-bold rounded mt-6 ">{item.btn}</button>
               </div>
             ))}
           </div>
