@@ -6,39 +6,9 @@ import { Link, NavLink } from "react-router-dom";
 import { NavbarUser } from "../../Utils/newNavbar";
 import { Logo, NavWrapper, NavbarContainer, ProfileBar } from "./styled.js";
 import { SiteTexts } from "../../Utils/texts.js";
-import { SettingOutlined } from "@ant-design/icons";
-import { Dropdown, Space } from "antd";
 
 const Navigating = ({ login = false, icon = false }) => {
   const [toggle, setToggle] = useState(false);
-
-  const items = [
-    {
-      key: "1",
-      label: "My Account",
-      disabled: true,
-    },
-    {
-      type: "divider",
-    },
-    {
-      key: "2",
-      label: "Profile",
-      extra: "⌘P",
-    },
-    {
-      key: "3",
-      label: "Billing",
-      extra: "⌘B",
-    },
-    {
-      key: "4",
-      label: "Settings",
-      icon: <SettingOutlined />,
-      extra: "⌘S",
-    },
-  ];
-
   if (login == false)
     return (
       <NavWrapper>
@@ -243,28 +213,13 @@ const Navigating = ({ login = false, icon = false }) => {
                 })}
               </div>
               <div className="profile-icon hidden md:block">
-                <Dropdown
-                  menu={{
-                    items,
-                  }}
-                >
-                  <a onClick={(e) => e.preventDefault()}>
-                    <Space>
-                      <ProfileBar>
-                        {icon ? (
-                          <img
-                            src={icon}
-                            alt=""
-                            className="w-10 h-10 rounded-full"
-                          />
-                        ) : (
-                          <b className="fa-regular fa-user"></b>
-                        )}
-                      </ProfileBar>{" "}
-                      {/* <DownOutlined /> */}
-                    </Space>
-                  </a>
-                </Dropdown>
+                <ProfileBar>
+                  {icon ? (
+                    <img src={icon} alt="" className="w-10 h-10 rounded-full" />
+                  ) : (
+                    <b className="fa-regular fa-user"></b>
+                  )}
+                </ProfileBar>
               </div>
             </div>
           </div>
